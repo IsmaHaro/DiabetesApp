@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/DiabetesApp.iml" filepath="$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/DiabetesApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/app/app.iml" filepath="$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/app/app.iml" />
+    </modules>
+  </component>
+</project>
