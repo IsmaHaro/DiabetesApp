@@ -14,7 +14,7 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        mydb = new DBHelper(this);
         showToolbar("Registro", true);
 
     }
@@ -27,6 +27,9 @@ public class Register extends AppCompatActivity {
     }
 
     public void registerUser(View view){
+        /*
+         * RETRIEVE USER INFORMATION
+         */
         String name         = ((EditText) findViewById(R.id.name_register)).getText().toString();
         String email        = ((EditText) findViewById(R.id.email_register)).getText().toString();
         String password     = ((EditText) findViewById(R.id.password_register)).getText().toString();
@@ -46,7 +49,7 @@ public class Register extends AppCompatActivity {
          */
         if(res){
             Toast.makeText(getApplicationContext(), "Usuario: "+name+"Registrado", Toast.LENGTH_SHORT).show();
-            
+
 
         }else{
             Toast.makeText(getApplicationContext(), "ERROR AL REGISTRAR", Toast.LENGTH_SHORT).show();

@@ -134,6 +134,7 @@
                 android:padding="10dp"
                 android:layout_margin="4dp"
                 android:text="Registrar"
+                android:onClick="registerUser"
                 android:background="@drawable/button1"
                 android:textColor="#FFF"
                 />
