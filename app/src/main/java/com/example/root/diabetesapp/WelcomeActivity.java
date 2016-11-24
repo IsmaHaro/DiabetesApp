@@ -12,6 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class WelcomeActivity extends AppCompatActivity {
     DBHelper mydb;
     SharedPreference shared;
@@ -25,11 +28,16 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        showToolbar("", false);
+        showToolbar("Bienvenido", false);
 
         mydb = new DBHelper(this);
         shared = new SharedPreference();
-        ((TextView) findViewById(R.id.welcome_username)).setText(shared.getValue(this, "name"));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String currentDateandTime = sdf.format(new Date());
+
+        ((TextView) findViewById(R.id.current_date_welcome)).setText("Fecha: "+currentDateandTime.toString());
+        ((TextView) findViewById(R.id.welcome_username)).setText("Bienvenido: "+shared.getValue(this, "name"));
 
         mPlaneTitles = getResources().getStringArray(R.array.left_drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
