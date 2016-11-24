@@ -75,18 +75,18 @@ public class WelcomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        Intent intent;
 
-        } else if (id == R.id.nav_slideshow) {
+        switch (id){
+            case R.id.nav_profile:
+                intent = new Intent(this, Profile.class);
+                startActivity(intent);
+                break;
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            case R.id.nav_grafic:
+                intent = new Intent(this, Grafic.class);
+                startActivity(intent);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
