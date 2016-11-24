@@ -138,12 +138,11 @@ public class DBHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateUser(Integer id, String name, String email, String password, String weight, String height, String doctor_email, String doctor_cel, String doctor_name) {
+    public boolean updateUser(Integer id, String name, String email, String weight, String height, String doctor_email, String doctor_cel, String doctor_name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("email", email);
-        contentValues.put("password", password);
         contentValues.put("weight", weight);
         contentValues.put("height", height);
         contentValues.put("doctor_email", doctor_email);
