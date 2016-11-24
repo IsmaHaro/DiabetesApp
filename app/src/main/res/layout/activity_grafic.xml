@@ -16,7 +16,7 @@
         android:id="@+id/plot"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        ap:label="A Simple XY Plot"
+        ap:label="Registro de Glucosa"
         ap:rangeLabel="range"
         ap:domainLabel="domain"/>
 

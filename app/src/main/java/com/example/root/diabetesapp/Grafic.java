@@ -5,8 +5,10 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.content.Intent;
@@ -26,20 +28,31 @@ import java.util.Arrays;
 public class Grafic extends AppCompatActivity {
 
     private XYPlot plot;
+    DBHelper mydb;
+    SharedPreference shared;
+    private Number[] series1Numbers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafic);
-
-
+        mydb = new DBHelper(this);
+        shared = new SharedPreference();
 
         // initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.plot);
 
         // create a couple arrays of y-values to plot:
-        Number[] series1Numbers = {1, 4, 2, 8, 4, 16, 8, 32, 16, 64};
+        ArrayList<String> data = mydb.getAllMeasurementsOfAUser(shared.getValue(this, "id"));
+
+        series1Numbers = new Number[data.size()];
+        for (int i=0; i<data.size(); i++){
+            series1Numbers[i]=Float.parseFloat(data.get(i));
+            Log.d("Informacion:", String.valueOf(series1Numbers[i]));
+        }
+
+
 
 
         // turn the above arrays into XYSeries':

@@ -187,7 +187,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return array_list;
     }
 
-    public ArrayList<String> getAllMeasurementsOfAUser(int id) {
+    public ArrayList<String> getAllMeasurementsOfAUser(String id) {
         ArrayList<String> array_list = new ArrayList<String>();
 
         SQLiteDatabase db = this.getReadableDatabase();
