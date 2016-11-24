@@ -148,7 +148,13 @@ public class WelcomeActivity extends AppCompatActivity
                     message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl";
                     Toast.makeText(this,"Nivel de glucosa ALTO",Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
-                    sendmail(doctor_email, subject, message);
+
+                    try {
+                        sendmail(doctor_email, subject, message);
+
+                    }catch(Exception e){
+
+                    }
 
                 }else if(glucoseI < 70){
                     /**
@@ -157,7 +163,13 @@ public class WelcomeActivity extends AppCompatActivity
                     message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl";
                     Toast.makeText(this,"Nivel de glucosa BAJO",Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
-                    sendmail(doctor_email, subject, message);
+
+                    try {
+                        sendmail(doctor_email, subject, message);
+
+                    }catch(Exception e){
+
+                    }
                 }
 
                 break;
@@ -180,7 +192,13 @@ public class WelcomeActivity extends AppCompatActivity
                     message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl";
                     Toast.makeText(this,"Nivel de glucosa ALTO",Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
-                    sendmail(doctor_email, subject, message);
+
+                    try {
+                        sendmail(doctor_email, subject, message);
+
+                    }catch(Exception e){
+
+                    }
 
                 }else if(glucoseI < 70){
                     /**
@@ -189,7 +207,13 @@ public class WelcomeActivity extends AppCompatActivity
                     message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl";
                     Toast.makeText(this,"Nivel de glucosa BAJO",Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
-                    sendmail(doctor_email, subject, message);
+
+                    try {
+                        sendmail(doctor_email, subject, message);
+
+                    }catch(Exception e){
+
+                    }
                 }
                 break;
         }
