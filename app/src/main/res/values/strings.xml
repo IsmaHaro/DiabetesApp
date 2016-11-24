@@ -21,5 +21,6 @@
 
     <string-array name="left_drawer">
         <item>Mi Perfil</item>
+        <item>Gráfica</item>
     </string-array>
 </resources>

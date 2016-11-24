@@ -90,6 +90,10 @@ public class WelcomeActivity extends AppCompatActivity {
                 intent = new Intent(this, Profile.class);
                 startActivity(intent);
                 break;
+            case 2:
+                intent = new Intent(this, Grafic.class);
+                startActivity(intent);
+                break;
         }
     }
 
