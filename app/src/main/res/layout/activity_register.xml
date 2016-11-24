@@ -80,6 +80,55 @@
             android:hint="Altura (cm)"
             android:textColorHint="#bbbbbb"/>
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Información del Doctor"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/editText2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:textAlignment="center"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="#000"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <EditText
+            android:id="@+id/doctor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:hint="Nombre"
+            android:textColorHint="#bbbbbb"/>
+
+        <EditText
+            android:id="@+id/doctor_cel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:inputType="number"
+            android:hint="Celular"
+            android:textColorHint="#bbbbbb"/>
+
+        <EditText
+            android:id="@+id/doctor_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textColorHint="#bbbbbb"/>
+
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
@@ -90,9 +139,6 @@
             android:background="@drawable/button1"
             android:textColor="#FFF"
             />
+
     </LinearLayout>
-
-
-
-
 </RelativeLayout>
