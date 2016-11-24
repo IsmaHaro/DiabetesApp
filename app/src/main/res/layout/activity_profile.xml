@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.root.diabetesapp.MainActivity"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="70dp">
+
+            <EditText
+                android:id="@+id/name_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:hint="Nombre"
+                android:textColorHint="#bbbbbb"/>
+
+            <EditText
+                android:id="@+id/email_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#bbbbbb"/>
+
+            <EditText
+                android:id="@+id/weight_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:inputType="number"
+                android:hint="Peso (KG)"
+                android:textColorHint="#bbbbbb"/>
+
+            <EditText
+                android:id="@+id/height_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:inputType="number"
+                android:hint="Altura (cm)"
+                android:textColorHint="#bbbbbb"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Información del Doctor"
+                android:id="@+id/textView3"
+                android:layout_below="@+id/editText2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="20dp"
+                android:textColor="#000"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#000"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+            <EditText
+                android:id="@+id/doctor_name_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:hint="Nombre"
+                android:textColorHint="#bbbbbb"/>
+
+            <EditText
+                android:id="@+id/doctor_cel_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:inputType="number"
+                android:hint="Celular"
+                android:textColorHint="#bbbbbb"/>
+
+            <EditText
+                android:id="@+id/doctor_email_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:padding="10dp"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:textColorHint="#bbbbbb"/>
+
+            <Button
+                android:id="@+id/btnSave_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_margin="4dp"
+                android:text="Guardar"
+                android:onClick="saveProfile"
+                android:background="@drawable/button1"
+                android:textColor="#FFF"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

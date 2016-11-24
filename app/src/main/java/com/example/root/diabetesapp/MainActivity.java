@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             /*
              * Login
              */
+            shared.save(this, "id", cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID)));
             shared.save(this, "name", cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_NAME)));
             shared.save(this, "email", email);
 
