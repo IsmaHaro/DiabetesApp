@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -58,7 +59,7 @@ public class Grafic extends AppCompatActivity {
         // turn the above arrays into XYSeries':
         // (Y_VALS_ONLY means use the element index as the x value)
         XYSeries series1 = new SimpleXYSeries(Arrays.asList(series1Numbers),
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series1");
+                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Captura");
 
 
 
@@ -85,6 +86,12 @@ public class Grafic extends AppCompatActivity {
 
         // rotate domain labels 45 degrees to make them more compact horizontally:
         plot.getGraphWidget().setDomainLabelOrientation(-45);
+
+        // add format to domain
+        plot.getGraphWidget().setDomainOriginLinePaint(null);
+        plot.setDomainStep(XYStepMode.INCREMENT_BY_VAL,series1Numbers.length);
+        plot.setDomainValueFormat(new DecimalFormat("0"));
+        plot.setDomainStepValue(1);
     }
 
 }
