@@ -15,14 +15,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:padding="10dp"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
+            android:text="Registro"
             android:id="@+id/textView2"
             android:layout_below="@+id/editText2"
             android:layout_alignParentLeft="true"
@@ -30,6 +31,15 @@
             android:textSize="25dp"
             android:textColor="#000"
             android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:hint="Nombre"
+            android:textColorHint="#bbbbbb"/>
 
         <EditText
             android:id="@+id/email"
@@ -50,14 +60,25 @@
             android:hint="Contraseña"
             android:textColorHint="#bbbbbb"/>
 
-        <Button
-            android:id="@+id/btnSingIn"
+        <EditText
+            android:id="@+id/weight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
             android:padding="10dp"
-            android:layout_margin="4dp"
-            android:text="Iniciar Sesión"
-            />
+            android:inputType="number"
+            android:hint="Peso (KG)"
+            android:textColorHint="#bbbbbb"/>
+
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:padding="10dp"
+            android:inputType="number"
+            android:hint="Altura (cm)"
+            android:textColorHint="#bbbbbb"/>
 
         <Button
             android:id="@+id/btnSignUp"
@@ -65,7 +86,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_margin="4dp"
-            android:text="Registrarse"
+            android:text="Registrar"
             android:background="@drawable/button1"
             android:textColor="#FFF"
             />
