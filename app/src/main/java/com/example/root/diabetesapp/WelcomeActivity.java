@@ -1,6 +1,8 @@
 package com.example.root.diabetesapp;
 
 import android.content.res.Configuration;
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,9 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class WelcomeActivity extends AppCompatActivity {
     DBHelper mydb;
@@ -31,7 +39,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
         mydb = new DBHelper(this);
         shared = new SharedPreference();
-        ((TextView) findViewById(R.id.welcome_username)).setText(shared.getValue(this, "name"));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String currentDateandTime = sdf.format(new Date());
+
+        ((TextView) findViewById(R.id.current_date_welcome)).setText("Fecha: "+currentDateandTime.toString());
+        ((TextView) findViewById(R.id.welcome_username)).setText("Bienvenido: "+shared.getValue(this, "name"));
 
         mPlaneTitles = getResources().getStringArray(R.array.left_drawer);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -97,6 +110,47 @@ public class WelcomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    protected void saveGlucose(View v){
+        Cursor cursor = mydb.getUserByEmail(shared.getValue(this, "email"));
+        cursor.moveToFirst();
+
+        int id = cursor.getInt(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID));
+        String weight = cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_WEIGHT));
+        String height = cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_HEIGHT));
+
+        EditText descriptionE = (EditText) findViewById(R.id.description_welcome);
+        EditText glucoseE    = (EditText) findViewById(R.id.glucose_welcome);
+
+        String description = descriptionE.getText().toString();
+        String glucose     = glucoseE.getText().toString();
+
+        descriptionE.setText("");
+        glucoseE.setText("");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String currentDateandTime = sdf.format(new Date());
+
+        int radio_selected = ((RadioGroup) findViewById(R.id.type_welcome)).getCheckedRadioButtonId();
+
+        String type = "";
+
+        switch(radio_selected){
+            case R.id.post:
+                type = "post";
+                ((RadioButton) findViewById(R.id.post)).setChecked(false);
+                break;
+            case R.id.pre:
+                type = "pre";
+                ((RadioButton) findViewById(R.id.pre)).setChecked(false);
+                break;
+        }
+
+
+        mydb.insertMeasurement(id, description, glucose, type, weight, height, currentDateandTime);
+
+        Toast.makeText(this,"Agregado medición de glucosa",Toast.LENGTH_SHORT).show();
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -105,7 +159,21 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void selectItem(int position) {
-        Toast.makeText(this,"Position: "+position,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Position: "+position,Toast.LENGTH_SHORT).show();
+
+        position++;
+        Intent intent;
+
+        switch (position){
+            case 1:
+                intent = new Intent(this, Profile.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent = new Intent(this, Grafic.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     public void showToolbar(String tittle, boolean upButton){

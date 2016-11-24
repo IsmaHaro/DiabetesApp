@@ -67,11 +67,14 @@ public class DBHelper extends SQLiteOpenHelper {
                         " user_id     INTEGER," +
                         " description TEXT, " +
                         " glucose     REAL," +
+                        " type        TEXT," +
                         " weight      TEXT," +
                         " height      TEXT," +
                         " date        TEXT)"
         );
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -95,15 +98,16 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertMeasurement(int user_id, String description, String glucose, String weight, String height, String date) {
+    public boolean insertMeasurement(int user_id, String description, String glucose, String type, String weight, String height, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("user_id", user_id);
         contentValues.put("description", description);
         contentValues.put("glucose", glucose);
+        contentValues.put("type", type);
         contentValues.put("weight", weight);
         contentValues.put("height", height);
-        contentValues.put("doctor_email", date);
+        contentValues.put("date", date);
         db.insert("measurements", null, contentValues);
         return true;
     }

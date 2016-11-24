@@ -34,6 +34,67 @@
                     android:textColor="#000"
                     android:textAlignment="center"
                     android:layout_marginTop="30dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/current_date_welcome"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"/>
+
+
+                <RadioGroup
+                    android:id="@+id/type_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <RadioButton
+                        android:text="Antes de comer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pre" />
+
+                    <RadioButton
+                        android:text="Después de comer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/post" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/glucose_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:padding="25dp"
+                    android:inputType="number"
+                    android:hint="Glucosa mg/dl"
+                    android:textColorHint="#bbbbbb"/>
+
+                <EditText
+                    android:id="@+id/description_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="-2dp"
+                    android:padding="10dp"
+                    android:hint="Comentario"
+                    android:textColorHint="#bbbbbb"/>
+
+                <Button
+                    android:id="@+id/saveGlucose_welcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="4dp"
+                    android:text="Agregar +"
+                    android:onClick="saveGlucose"
+                    android:background="@drawable/button1"
+                    android:textColor="#FFF"
+                    />
+
             </LinearLayout>
 
         </FrameLayout>
