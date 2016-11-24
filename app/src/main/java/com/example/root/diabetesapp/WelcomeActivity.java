@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,7 +105,23 @@ public class WelcomeActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String currentDateandTime = sdf.format(new Date());
 
-        mydb.insertMeasurement(id, description, glucose, weight, height, currentDateandTime);
+        int radio_selected = ((RadioGroup) findViewById(R.id.type_welcome)).getCheckedRadioButtonId();
+
+        String type = "";
+
+        switch(radio_selected){
+            case R.id.post:
+                type = "post";
+                ((RadioButton) findViewById(R.id.post)).setChecked(false);
+                break;
+            case R.id.pre:
+                type = "pre";
+                ((RadioButton) findViewById(R.id.pre)).setChecked(false);
+                break;
+        }
+
+
+        mydb.insertMeasurement(id, description, glucose, type, weight, height, currentDateandTime);
 
         Toast.makeText(this,"Agregado medición de glucosa",Toast.LENGTH_SHORT).show();
     }
