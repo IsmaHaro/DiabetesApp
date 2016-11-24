@@ -56,6 +56,9 @@ public class Profile extends AppCompatActivity {
 
         mydb.updateUser(cursor.getInt(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID)), name, email, weight, height, doctor_email, doctor_cel, doctor_name);
 
+        shared.save(this, "name", name);
+        shared.save(this, "email", email);
+
         Toast.makeText(getApplicationContext(), "Perfil Actualizado", Toast.LENGTH_SHORT).show();
     }
 }
