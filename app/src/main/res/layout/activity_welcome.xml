@@ -50,19 +50,22 @@
                 <RadioGroup
                     android:id="@+id/type_welcome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                    android:padding="5dp">
 
                     <RadioButton
                         android:text="Antes de comer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/pre" />
+                        android:id="@+id/pre"
+                        android:padding="15dp"/>
 
                     <RadioButton
                         android:text="Después de comer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/post" />
+                        android:id="@+id/post"
+                        android:padding="15dp"/>
                 </RadioGroup>
 
                 <EditText
