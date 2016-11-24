@@ -30,7 +30,7 @@
             android:layout_marginTop="70dp">
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/name_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -39,7 +39,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -48,7 +48,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -58,7 +58,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/weight"
+                android:id="@+id/weight_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -68,7 +68,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/height"
+                android:id="@+id/height_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -99,7 +99,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <EditText
-                android:id="@+id/doctor_name"
+                android:id="@+id/doctor_name_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -108,7 +108,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/doctor_cel"
+                android:id="@+id/doctor_cel_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -118,7 +118,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <EditText
-                android:id="@+id/doctor_email"
+                android:id="@+id/doctor_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-2dp"
@@ -128,7 +128,7 @@
                 android:textColorHint="#bbbbbb"/>
 
             <Button
-                android:id="@+id/btnSignUp"
+                android:id="@+id/btnSignUp_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
