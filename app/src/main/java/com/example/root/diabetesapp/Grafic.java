@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class Grafic extends AppCompatActivity {
         series1Numbers = new Number[data.size()];
         for (int i=0; i<data.size(); i++){
             series1Numbers[i]=Float.parseFloat(data.get(i));
+            Log.d("Informacion:", String.valueOf(series1Numbers[i]));
         }
 
 
