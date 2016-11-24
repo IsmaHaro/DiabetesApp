@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/DiabetesApp.iml" filepath="$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/DiabetesApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/app/app.iml" filepath="$PROJECT_DIR$/../../../backup/projects/personal/DiabetesApp/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DiabetesApp.iml" filepath="$PROJECT_DIR$/DiabetesApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
