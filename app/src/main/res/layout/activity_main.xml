@@ -32,7 +32,7 @@
             android:textAlignment="center"/>
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/email_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -41,7 +41,7 @@
             android:textColorHint="#bbbbbb"/>
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/password_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-2dp"
@@ -57,6 +57,7 @@
             android:padding="10dp"
             android:layout_margin="4dp"
             android:text="Iniciar Sesión"
+            android:onClick="Login"
             />
 
         <Button

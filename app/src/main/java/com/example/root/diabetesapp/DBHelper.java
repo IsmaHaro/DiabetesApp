@@ -120,6 +120,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getUserLogin(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "SELECT * FROM users WHERE email='"+email+"' AND password='"+password+"'", null );
+        return res;
+    }
+
     public Cursor getMeasurementById(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "SELECT * FROM measurements WHERE id="+id+"", null );
