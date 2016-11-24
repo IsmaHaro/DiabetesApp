@@ -60,7 +60,7 @@ public class Register extends AppCompatActivity {
              * STORE SESSION INFO
              */
             shared.save(this, "name", name);
-            shared.save(this, "email", name);
+            shared.save(this, "email", email);
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
 
