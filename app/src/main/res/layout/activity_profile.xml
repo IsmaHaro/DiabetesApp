@@ -119,6 +119,7 @@
                 android:padding="10dp"
                 android:layout_margin="4dp"
                 android:text="Guardar"
+                android:onClick="saveProfile"
                 android:background="@drawable/button1"
                 android:textColor="#FFF"
                 />
