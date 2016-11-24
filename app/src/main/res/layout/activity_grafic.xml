@@ -11,6 +11,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.root.diabetesapp.Grafic">
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+
     <com.androidplot.xy.XYPlot
         style="@style/APDefacto.Dark"
         android:id="@+id/plot"

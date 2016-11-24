@@ -41,6 +41,9 @@ public class Grafic extends AppCompatActivity {
         mydb = new DBHelper(this);
         shared = new SharedPreference();
 
+        //----Spinner------
+        
+
         // initialize our XYPlot reference:
         plot = (XYPlot) findViewById(R.id.plot);
 
@@ -59,7 +62,7 @@ public class Grafic extends AppCompatActivity {
         // turn the above arrays into XYSeries':
         // (Y_VALS_ONLY means use the element index as the x value)
         XYSeries series1 = new SimpleXYSeries(Arrays.asList(series1Numbers),
-                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Captura");
+                SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Glucosa/Captura");
 
 
 
@@ -92,6 +95,10 @@ public class Grafic extends AppCompatActivity {
         plot.setDomainStep(XYStepMode.INCREMENT_BY_VAL,series1Numbers.length);
         plot.setDomainValueFormat(new DecimalFormat("0"));
         plot.setDomainStepValue(1);
+
+
+        plot.setDomainLabel("NumeroCaptura");
+        plot.setRangeLabel("NivelGlucosa");
     }
 
 }
