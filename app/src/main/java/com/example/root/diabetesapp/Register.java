@@ -1,5 +1,6 @@
 package com.example.root.diabetesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,12 +10,14 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
     DBHelper mydb;
+    SharedPreference shared;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mydb = new DBHelper(this);
+        shared = new SharedPreference();
         showToolbar("Registro", true);
 
     }
@@ -50,6 +53,13 @@ public class Register extends AppCompatActivity {
         if(res){
             Toast.makeText(getApplicationContext(), "Usuario: "+name+"Registrado", Toast.LENGTH_SHORT).show();
 
+            /*
+             * STORE SESSION INFO
+             */
+            shared.save(this, "name", name);
+            shared.save(this, "email", name);
+            Intent intent = new Intent(this, WelcomeActivity.class);
+            startActivity(intent);
 
         }else{
             Toast.makeText(getApplicationContext(), "ERROR AL REGISTRAR", Toast.LENGTH_SHORT).show();
