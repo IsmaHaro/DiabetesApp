@@ -48,35 +48,62 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO Auto-generated method stub
         db.execSQL(
-                "create table contacts " +
-                        "(id integer primary key, name text,phone text,email text, street text,place text)"
+                "CREATE TABLE  users " +
+                        "(id           INTEGER PRIMARY KEY, " +
+                        " name         TEXT," +
+                        " email        TEXT, " +
+                        " password     TEXT," +
+                        " weight       TEXT," +
+                        " height       TEXT," +
+                        " doctor_email TEXT," +
+                        " doctor_cel   TEXT," +
+                        " doctor_name  TEXT)"
+        );
+
+        db.execSQL(
+                "CREATE TABLE  measurements " +
+                        "(id          INTEGER PRIMARY KEY, " +
+                        " user_id     INTEGER," +
+                        " description TEXT, " +
+                        " glucose     REAL," +
+                        " weight      TEXT," +
+                        " height      TEXT," +
+                        " date        TEXT)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // TODO Auto-generated method stub
-        db.execSQL("DROP TABLE IF EXISTS contacts");
+        db.execSQL("DROP TABLE IF EXISTS users");
+        db.execSQL("DROP TABLE IF EXISTS measurements");
         onCreate(db);
     }
 
-    public boolean insertContact (String name, String phone, String email, String street,String place) {
+    public boolean insertUser (String name, String email, String password, String weight, String height, String doctor_email, String doctor_cel, String doctor_name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
-        contentValues.put("phone", phone);
         contentValues.put("email", email);
-        contentValues.put("street", street);
-        contentValues.put("place", place);
+        contentValues.put("password", password);
+        contentValues.put("weight", weight);
+        contentValues.put("height", height);
+        contentValues.put("doctor_email", doctor_email);
+        contentValues.put("doctor_cel", doctor_cel);
+        contentValues.put("doctor_name", doctor_name);
         db.insert("contacts", null, contentValues);
         return true;
     }
 
-    public Cursor getData(int id) {
+    public Cursor getUserById(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from contacts where id="+id+"", null );
+        Cursor res =  db.rawQuery( "SELECT * FROM users WHERE id="+id+"", null );
+        return res;
+    }
+
+    public Cursor getUserByEmail(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "SELECT * FROM users WHERE email="+email+"", null );
         return res;
     }
 
@@ -86,37 +113,49 @@ public class DBHelper extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateContact (Integer id, String name, String phone, String email, String street,String place) {
+    public boolean updateUser(Integer id, String name, String email, String password, String weight, String height, String doctor_email, String doctor_cel, String doctor_name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
-        contentValues.put("phone", phone);
         contentValues.put("email", email);
-        contentValues.put("street", street);
-        contentValues.put("place", place);
-        db.update("contacts", contentValues, "id = ? ", new String[] { Integer.toString(id) } );
+        contentValues.put("password", password);
+        contentValues.put("weight", weight);
+        contentValues.put("height", height);
+        contentValues.put("doctor_email", doctor_email);
+        contentValues.put("doctor_cel", doctor_cel);
+        contentValues.put("doctor_name", doctor_name);
+
+        db.update("users", contentValues, "id = ? ", new String[] { Integer.toString(id) } );
         return true;
     }
 
-    public Integer deleteContact (Integer id) {
+
+    public Integer deleteUserById(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("contacts",
+        return db.delete("users",
                 "id = ? ",
                 new String[] { Integer.toString(id) });
     }
 
-    public ArrayList<String> getAllCotacts() {
+    public Integer deleteUserByEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("users",
+                "email = ? ",
+                new String[] { email.toString() });
+    }
+
+    public ArrayList<String> getAllUsers() {
         ArrayList<String> array_list = new ArrayList<String>();
 
-        //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from contacts", null );
+        Cursor res =  db.rawQuery("SELECT * FROM users", null );
         res.moveToFirst();
 
         while(res.isAfterLast() == false){
             array_list.add(res.getString(res.getColumnIndex(USERS_COLUMN_NAME)));
             res.moveToNext();
         }
+
         return array_list;
     }
 }
