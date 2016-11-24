@@ -38,10 +38,8 @@ public class Register extends AppCompatActivity {
 
         Cursor cursor = mydb.getUserByEmail(email);
 
-        if (cursor != null){
-
-            Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
-
+        if (cursor.moveToFirst()){
+            Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_SHORT).show();
         }else{
             String name         = ((EditText) findViewById(R.id.name_register)).getText().toString();
             String password     = ((EditText) findViewById(R.id.password_register)).getText().toString();
@@ -51,14 +49,10 @@ public class Register extends AppCompatActivity {
             String doctor_cel   = ((EditText) findViewById(R.id.doctor_cel_register)).getText().toString();
             String doctor_name  = ((EditText) findViewById(R.id.doctor_name_register)).getText().toString();
 
-        /*
-         * INSERT USER
-         */
+
             boolean res =  mydb.insertUser(name, email, password, weight, height, doctor_email, doctor_cel, doctor_name);
 
-        /*
-         * Check if user was inserted
-         */
+
             if(res){
                 Toast.makeText(getApplicationContext(), "Usuario: "+name+"Registrado", Toast.LENGTH_SHORT).show();
 
@@ -74,9 +68,6 @@ public class Register extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "ERROR AL REGISTRAR", Toast.LENGTH_SHORT).show();
             }
         }
-
-
-
     }
 
 }

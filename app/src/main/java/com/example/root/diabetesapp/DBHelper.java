@@ -116,7 +116,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Cursor getUserByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "SELECT * FROM users WHERE email="+email+"", null );
+        Cursor res =  db.rawQuery( "SELECT * FROM users WHERE email='"+email+"'", null );
         return res;
     }
 
