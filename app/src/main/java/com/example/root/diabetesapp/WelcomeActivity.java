@@ -1,5 +1,6 @@
 package com.example.root.diabetesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class WelcomeActivity extends AppCompatActivity {
     DBHelper mydb;
@@ -80,7 +80,17 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void selectItem(int position) {
-        Toast.makeText(this,"Position: "+position,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Position: "+position,Toast.LENGTH_SHORT).show();
+
+        position++;
+        Intent intent;
+
+        switch (position){
+            case 1:
+                intent = new Intent(this, Profile.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     public void showToolbar(String tittle, boolean upButton){

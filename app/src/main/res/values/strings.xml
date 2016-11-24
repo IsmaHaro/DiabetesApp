@@ -20,11 +20,6 @@
 
 
     <string-array name="left_drawer">
-        <item>Opción 1</item>
-        <item>Opción 2</item>
-        <item>Opción 3</item>
-        <item>Opción 4</item>
-        <item>Opción 5</item>
-        <item>Opción 6</item>
+        <item>Mi Perfil</item>
     </string-array>
 </resources>

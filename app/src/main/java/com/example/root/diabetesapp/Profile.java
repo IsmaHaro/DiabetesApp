@@ -24,6 +24,7 @@ public class Profile extends AppCompatActivity {
          * Load user information
          */
         Cursor cursor = mydb.getUserByEmail(shared.getValue(this, "email"));
+        cursor.moveToFirst();
 
         ((EditText) findViewById(R.id.name_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_NAME)));
         ((EditText) findViewById(R.id.email_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_EMAIL)));
@@ -43,6 +44,7 @@ public class Profile extends AppCompatActivity {
 
     public void saveProfile(View v){
         Cursor cursor = mydb.getUserByEmail(shared.getValue(this, "email"));
+        cursor.moveToFirst();
 
         String name = ((EditText) findViewById(R.id.name_profile)).getText().toString();
         String email = ((EditText) findViewById(R.id.email_profile)).getText().toString();
