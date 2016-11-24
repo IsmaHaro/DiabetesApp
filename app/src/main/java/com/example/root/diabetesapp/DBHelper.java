@@ -91,7 +91,20 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("doctor_email", doctor_email);
         contentValues.put("doctor_cel", doctor_cel);
         contentValues.put("doctor_name", doctor_name);
-        db.insert("contacts", null, contentValues);
+        db.insert("users", null, contentValues);
+        return true;
+    }
+
+    public boolean insertMeasurement(int user_id, String description, String glucose, String weight, String height, String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user_id", user_id);
+        contentValues.put("description", description);
+        contentValues.put("glucose", glucose);
+        contentValues.put("weight", weight);
+        contentValues.put("height", height);
+        contentValues.put("doctor_email", date);
+        db.insert("measurements", null, contentValues);
         return true;
     }
 
@@ -104,6 +117,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor getUserByEmail(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor res =  db.rawQuery( "SELECT * FROM users WHERE email="+email+"", null );
+        return res;
+    }
+
+    public Cursor getMeasurementById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "SELECT * FROM measurements WHERE id="+id+"", null );
         return res;
     }
 
@@ -153,6 +172,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
         while(res.isAfterLast() == false){
             array_list.add(res.getString(res.getColumnIndex(USERS_COLUMN_NAME)));
+            res.moveToNext();
+        }
+
+        return array_list;
+    }
+
+    public ArrayList<String> getAllMeasurementsOfAUser(int id) {
+        ArrayList<String> array_list = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery("SELECT * FROM measurements WHERE user_id = " + id, null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+            array_list.add(res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_GLUCOSE)));
             res.moveToNext();
         }
 
