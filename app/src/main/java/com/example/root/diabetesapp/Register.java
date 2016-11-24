@@ -40,6 +40,7 @@ public class Register extends AppCompatActivity {
 
         if (cursor.moveToFirst()){
             Toast.makeText(this, "Usuario ya registrado", Toast.LENGTH_SHORT).show();
+
         }else{
             String name         = ((EditText) findViewById(R.id.name_register)).getText().toString();
             String password     = ((EditText) findViewById(R.id.password_register)).getText().toString();
@@ -59,8 +60,11 @@ public class Register extends AppCompatActivity {
             /*
              * STORE SESSION INFO
              */
+            cursor = mydb.getUserByEmail(email);
+            cursor.moveToFirst();
             shared.save(this, "name", name);
             shared.save(this, "email", email);
+            shared.save(this, "id", cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID)));
             Intent intent = new Intent(this, WelcomeActivity.class);
             startActivity(intent);
 
