@@ -103,7 +103,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("glucose", glucose);
         contentValues.put("weight", weight);
         contentValues.put("height", height);
-        contentValues.put("doctor_email", date);
+        contentValues.put("date", date);
         db.insert("measurements", null, contentValues);
         return true;
     }

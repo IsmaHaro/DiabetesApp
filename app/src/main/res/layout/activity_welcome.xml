@@ -51,11 +51,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-2dp"
                     android:padding="25dp"
+                    android:inputType="number"
                     android:hint="Glucosa mg/dl"
                     android:textColorHint="#bbbbbb"/>
 
                 <EditText
-                    android:id="@+id/note_welcome"
+                    android:id="@+id/description_welcome"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_marginTop="-2dp"
