@@ -23,13 +23,12 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".WelcomeActivity" />
-
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" />
         <activity
             android:name=".DrawerReference"
             android:label="@string/title_activity_drawer_reference"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".Grafic"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Grafic" />
     </application>
 
 </manifest>

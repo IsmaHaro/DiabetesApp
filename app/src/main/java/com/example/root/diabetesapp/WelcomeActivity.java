@@ -25,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     DBHelper mydb;
     SharedPreference shared;
-    private DrawerLayout mDrawerLayout;
+    protected DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
 
@@ -33,8 +33,6 @@ public class WelcomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        //showToolbar("", false);
 
         mydb = new DBHelper(this);
         shared = new SharedPreference();
@@ -81,6 +79,7 @@ public class WelcomeActivity extends AppCompatActivity
             case R.id.nav_profile:
                 intent = new Intent(this, Profile.class);
                 startActivity(intent);
+                mDrawerLayout.closeDrawers();
                 break;
 
             case R.id.nav_grafic:
