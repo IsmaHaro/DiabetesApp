@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             shared.save(this, "name", cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_NAME)));
             shared.save(this, "email", email);
 
-            Intent intent = new Intent(this, WelcomeActivity.class);
+            Intent intent = new Intent(this, MainFragment.class);
             startActivity(intent);
 
         }else{

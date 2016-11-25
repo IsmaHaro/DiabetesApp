@@ -2,7 +2,10 @@ package com.example.root.diabetesapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.androidplot.xy.CatmullRomInterpolator;
 import com.androidplot.xy.LineAndPointFormatter;
@@ -15,7 +18,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Grafic1 extends AppCompatActivity {
+public class Grafic1 extends Fragment {
 
     private XYPlot plot;
     DBHelper mydb;
@@ -23,18 +26,23 @@ public class Grafic1 extends AppCompatActivity {
     private Number[] series1Numbers;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grafic1);
-        mydb = new DBHelper(this);
+
+        return inflater.inflate(R.layout.activity_grafic1, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        mydb = new DBHelper(getActivity());
         shared = new SharedPreference();
 
 
         // initialize our XYPlot reference:
-        plot = (XYPlot) findViewById(R.id.plot);
+        plot = (XYPlot) getView().findViewById(R.id.plot);
 
         // create a couple arrays of y-values to plot:
-        ArrayList<String> data = mydb.getAllMeasurementsOfAUser(shared.getValue(this, "id"));
+        ArrayList<String> data = mydb.getAllMeasurementsOfAUser(shared.getValue(getActivity(), "id"));
 
         series1Numbers = new Number[data.size()];
         for (int i = 0; i < data.size(); i++) {
@@ -79,7 +87,5 @@ public class Grafic1 extends AppCompatActivity {
 
         plot.setDomainLabel("NumeroCaptura");
         plot.setRangeLabel("NivelGlucosa");
-
-
     }
 }

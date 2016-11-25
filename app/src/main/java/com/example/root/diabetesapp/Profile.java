@@ -2,65 +2,47 @@ package com.example.root.diabetesapp;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends Fragment {
     DBHelper mydb;
     SharedPreference shared;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
 
 
-        mydb = new DBHelper(this);
+        return inflater.inflate(R.layout.activity_profile,container,false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        mydb = new DBHelper(getActivity());
         shared = new SharedPreference();
-        showToolbar("Perfil", true);
 
         /*
          * Load user information
          */
-        Cursor cursor = mydb.getUserByEmail(shared.getValue(this, "email"));
+        Cursor cursor = mydb.getUserByEmail(shared.getValue(getActivity(), "email"));
         cursor.moveToFirst();
 
-        ((EditText) findViewById(R.id.name_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_NAME)));
-        ((EditText) findViewById(R.id.email_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_EMAIL)));
-        ((EditText) findViewById(R.id.weight_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_WEIGHT)));
-        ((EditText) findViewById(R.id.height_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_HEIGHT)));
-        ((EditText) findViewById(R.id.doctor_email_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_EMAIL)));
-        ((EditText) findViewById(R.id.doctor_cel_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_CEL)));
-        ((EditText) findViewById(R.id.doctor_name_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_NAME)));
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
+        appCompatActivity.getSupportActionBar().setTitle("Perfil");
+
+
+        ((EditText) getView().findViewById(R.id.name_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_NAME)));
+        ((EditText) getView().findViewById(R.id.email_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_EMAIL)));
+        ((EditText) getView().findViewById(R.id.weight_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_WEIGHT)));
+        ((EditText) getView().findViewById(R.id.height_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_HEIGHT)));
+        ((EditText) getView().findViewById(R.id.doctor_email_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_EMAIL)));
+        ((EditText) getView().findViewById(R.id.doctor_cel_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_CEL)));
+        ((EditText) getView().findViewById(R.id.doctor_name_profile)).setText(cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_DOCTOR_NAME)));
     }
 
-    public void showToolbar(String tittle, boolean upButton){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(tittle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
-    }
-
-    public void saveProfile(View v){
-        Cursor cursor = mydb.getUserByEmail(shared.getValue(this, "email"));
-        cursor.moveToFirst();
-
-        String name = ((EditText) findViewById(R.id.name_profile)).getText().toString();
-        String email = ((EditText) findViewById(R.id.email_profile)).getText().toString();
-        String weight = ((EditText) findViewById(R.id.weight_profile)).getText().toString();
-        String height = ((EditText) findViewById(R.id.height_profile)).getText().toString();
-        String doctor_email = ((EditText) findViewById(R.id.doctor_email_profile)).getText().toString();
-        String doctor_cel = ((EditText) findViewById(R.id.doctor_cel_profile)).getText().toString();
-        String doctor_name = ((EditText) findViewById(R.id.doctor_name_profile)).getText().toString();
-
-        mydb.updateUser(cursor.getInt(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID)), name, email, weight, height, doctor_email, doctor_cel, doctor_name);
-
-        shared.save(this, "name", name);
-        shared.save(this, "email", email);
-
-        Toast.makeText(getApplicationContext(), "Perfil Actualizado", Toast.LENGTH_SHORT).show();
-    }
 }

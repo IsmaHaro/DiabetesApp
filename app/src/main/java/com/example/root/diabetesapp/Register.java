@@ -65,7 +65,7 @@ public class Register extends AppCompatActivity {
             shared.save(this, "name", name);
             shared.save(this, "email", email);
             shared.save(this, "id", cursor.getString(cursor.getColumnIndex(DBHelper.USERS_COLUMN_ID)));
-            Intent intent = new Intent(this, WelcomeActivity.class);
+            Intent intent = new Intent(this, MainFragment.class);
             startActivity(intent);
 
             }else{
