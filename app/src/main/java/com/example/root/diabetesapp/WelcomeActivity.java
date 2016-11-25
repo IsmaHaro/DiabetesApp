@@ -88,6 +88,10 @@ public class WelcomeActivity extends AppCompatActivity
                 intent = new Intent(this, Grafic.class);
                 startActivity(intent);
                 break;
+            case R.id.nav_grafic1:
+                intent = new Intent(this, Grafic1.class);
+                startActivity(intent);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
