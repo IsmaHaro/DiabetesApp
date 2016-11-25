@@ -10,6 +10,9 @@
         android:layout_height="match_parent">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -24,18 +27,6 @@
                 android:padding="10dp"
                 android:layout_marginTop="70dp">
 
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/welcome_username"
-                    android:textSize="20dp"
-                    android:textColor="#000"
-                    android:textAlignment="center"
-                    android:layout_marginTop="30dp"/>
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -46,6 +37,15 @@
                     android:textAlignment="center"
                     android:layout_marginTop="30dp"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/current_time_welcome"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"/>
 
                 <RadioGroup
                     android:id="@+id/type_welcome"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:layout_margin="4dp"
-                    android:text="Agregar +"
+                    android:text="Guardar"
                     android:onClick="saveGlucose"
                     android:background="@drawable/button1"
                     android:textColor="#FFF"
@@ -101,7 +101,11 @@
 
             </LinearLayout>
 
+
+
         </FrameLayout>
+
+    </ScrollView>
 
 
 
@@ -115,3 +119,4 @@
         app:menu="@menu/activity_drawer_reference_drawer" />
 
     </android.support.v4.widget.DrawerLayout>
+

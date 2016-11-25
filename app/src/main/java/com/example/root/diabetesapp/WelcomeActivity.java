@@ -41,10 +41,13 @@ public class WelcomeActivity extends AppCompatActivity
         shared = new SharedPreference();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String currentDateandTime = sdf.format(new Date());
+        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
+        String currentDate = sdf.format(new Date());
+        String currentTime = sdf2.format(new Date());
 
-        ((TextView) findViewById(R.id.current_date_welcome)).setText("Fecha: "+currentDateandTime.toString());
-        ((TextView) findViewById(R.id.welcome_username)).setText("Bienvenido: "+shared.getValue(this, "name"));
+        ((TextView) findViewById(R.id.current_date_welcome)).setText("Fecha: "+currentDate.toString());
+        ((TextView) findViewById(R.id.current_time_welcome)).setText("Hora: "+currentTime.toString());
+        //((TextView) findViewById(R.id.welcome_username)).setText("Bienvenido: "+shared.getValue(this, "name"));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -79,6 +82,11 @@ public class WelcomeActivity extends AppCompatActivity
         Intent intent;
 
         switch (id){
+            case R.id.nav_welcome:
+                intent = new Intent(this, WelcomeActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.nav_profile:
                 intent = new Intent(this, Profile.class);
                 startActivity(intent);
