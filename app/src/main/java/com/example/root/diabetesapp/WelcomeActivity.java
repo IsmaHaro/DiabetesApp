@@ -43,8 +43,9 @@ public class WelcomeActivity extends AppCompatActivity
         shared = new SharedPreference();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
         String currentDate = sdf.format(new Date());
+
+        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
         String currentTime = sdf2.format(new Date());
 
         ((TextView) findViewById(R.id.current_date_welcome)).setText("Fecha: "+currentDate.toString());
@@ -103,6 +104,12 @@ public class WelcomeActivity extends AppCompatActivity
                 intent = new Intent(this, Grafic.class);
                 startActivity(intent);
                 break;
+
+            case R.id.nav_logout:
+                shared.clearSharedPreference(this);
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -138,6 +145,9 @@ public class WelcomeActivity extends AppCompatActivity
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String currentDateandTime = sdf.format(new Date());
 
+        SimpleDateFormat sdf2 = new SimpleDateFormat("hh:mm a");
+        String currentTime = sdf2.format(new Date());
+
         int radio_selected = ((RadioGroup) findViewById(R.id.type_welcome)).getCheckedRadioButtonId();
 
         String type = "";
@@ -160,8 +170,8 @@ public class WelcomeActivity extends AppCompatActivity
                     /**
                      * GLUCOSE OUT OF NORMAL
                      */
-                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl";
-                    Toast.makeText(this,"Nivel de glucosa ALTO",Toast.LENGTH_SHORT).show();
+                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl.\nFecha: " +currentDateandTime;
+                    Toast.makeText(this,"Nivel de glucosa ALTO.\nFecha: "+currentDateandTime,Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
 
                     try {
@@ -175,8 +185,8 @@ public class WelcomeActivity extends AppCompatActivity
                     /**
                      * GLUCOSE OUT OF NORMAL
                      */
-                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl";
-                    Toast.makeText(this,"Nivel de glucosa BAJO",Toast.LENGTH_SHORT).show();
+                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl.\nFecha: "+currentDateandTime;
+                    Toast.makeText(this,"Nivel de glucosa BAJO.\nFecha: "+currentDateandTime,Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
 
                     try {
@@ -204,8 +214,8 @@ public class WelcomeActivity extends AppCompatActivity
                     /**
                      * GLUCOSE OUT OF NORMAL
                      */
-                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl";
-                    Toast.makeText(this,"Nivel de glucosa ALTO",Toast.LENGTH_SHORT).show();
+                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa ALTO: "+glucose+" mg/dl\nFecha: "+currentDateandTime;
+                    Toast.makeText(this,"Nivel de glucosa ALTO.\nFecha: "+currentDateandTime,Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
 
                     try {
@@ -219,8 +229,8 @@ public class WelcomeActivity extends AppCompatActivity
                     /**
                      * GLUCOSE OUT OF NORMAL
                      */
-                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl";
-                    Toast.makeText(this,"Nivel de glucosa BAJO",Toast.LENGTH_SHORT).show();
+                    message = "El paciente: "+user_name+" ha presentado un nivel de glucosa BAJO: "+glucose+" mg/dl\nFecha: "+currentDateandTime;
+                    Toast.makeText(this,"Nivel de glucosa BAJO.\nFecha: "+currentDateandTime,Toast.LENGTH_SHORT).show();
                     sendsms(doctor_cel, message);
 
                     try {
@@ -234,7 +244,7 @@ public class WelcomeActivity extends AppCompatActivity
         }
 
 
-        mydb.insertMeasurement(id, description, glucose, type, weight, height, currentDateandTime);
+        mydb.insertMeasurement(id, description, glucose, type, weight, height, currentTime, currentDateandTime);
 
         //Toast.makeText(this,"Agregado medición de glucosa",Toast.LENGTH_SHORT).show();
     }

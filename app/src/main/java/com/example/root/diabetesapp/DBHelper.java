@@ -40,6 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String MEASUREMENTS_COLUMN_TYPE        = "type";
     public static final String MEASUREMENTS_COLUMN_HEIGHT      = "height";
     public static final String MEASUREMENTS_COLUMN_DATE        = "date";
+    public static final String MEASUREMENTS_COLUMN_HOUR        = "hour";
 
     private HashMap hp;
 
@@ -71,6 +72,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         " type        TEXT," +
                         " weight      TEXT," +
                         " height      TEXT," +
+                        " hour        TEXT," +
                         " date        TEXT)"
         );
     }
@@ -99,7 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertMeasurement(int user_id, String description, String glucose, String type, String weight, String height, String date) {
+    public boolean insertMeasurement(int user_id, String description, String glucose, String type, String weight, String height, String hour, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("user_id", user_id);
@@ -108,6 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("type", type);
         contentValues.put("weight", weight);
         contentValues.put("height", height);
+        contentValues.put("hour", hour);
         contentValues.put("date", date);
         db.insert("measurements", null, contentValues);
         return true;
@@ -207,13 +210,14 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<String> array_list = new ArrayList<String>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery("SELECT * FROM measurements WHERE user_id = " + id, null );
+        Cursor res =  db.rawQuery("SELECT * FROM measurements WHERE user_id = " + id + " ORDER BY id DESC", null );
         res.moveToFirst();
 
         while(res.isAfterLast() == false){
             String cad = "Glucosa: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_GLUCOSE));
             cad += "\nTipo de Medición (comida): "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_TYPE));
             cad += "\nFecha: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_DATE));
+            cad += "\nHora: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_HOUR));
             cad += "\nComentario: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_DESCRIPTION));
 
             array_list.add(cad);

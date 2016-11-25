@@ -97,6 +97,12 @@ public class Profile extends AppCompatActivity
                 intent = new Intent(this, Grafic.class);
                 startActivity(intent);
                 break;
+
+            case R.id.nav_logout:
+                shared.clearSharedPreference(this);
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

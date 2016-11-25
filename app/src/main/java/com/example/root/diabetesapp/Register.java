@@ -55,7 +55,7 @@ public class Register extends AppCompatActivity {
 
 
             if(res){
-                Toast.makeText(getApplicationContext(), "Usuario: "+name+"Registrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Usuario: "+name+" Registrado", Toast.LENGTH_SHORT).show();
 
             /*
              * STORE SESSION INFO
