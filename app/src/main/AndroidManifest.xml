@@ -29,6 +29,7 @@
             android:label="@string/title_activity_drawer_reference"
             android:theme="@style/AppTheme" />
         <activity android:name=".Grafic" />
+        <activity android:name=".Grafic1"></activity>
     </application>
 
 </manifest>

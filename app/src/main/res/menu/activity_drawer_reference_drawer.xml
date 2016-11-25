@@ -6,10 +6,6 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_menu_camera"
             android:title="Perfil" />
-        <item
-            android:id="@+id/nav_grafic"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gráfica" />
         <!--<item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -20,17 +16,17 @@
             android:title="Tools" />-->
     </group>
 
-    <!--<item android:title="Communicate">
+    <item android:title="Graficas">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_grafic"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Gráfica Año" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_grafic1"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Gráfica Mes" />
         </menu>
-    </item>-->
+    </item>
 
 </menu>
