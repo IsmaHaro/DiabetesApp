@@ -4,10 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_welcome"
-            android:title="Inicio" />
+            android:title="Inicio"/>
         <item
             android:id="@+id/nav_grafic"
             android:title="Gráfica" />
+        <item
+            android:id="@+id/nav_historic"
+            android:title="Historial" />
         <item
             android:id="@+id/nav_profile"
             android:title="Perfil" />

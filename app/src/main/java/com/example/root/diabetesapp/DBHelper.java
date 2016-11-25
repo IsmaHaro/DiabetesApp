@@ -37,6 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String MEASUREMENTS_COLUMN_DESCRIPTION = "description";
     public static final String MEASUREMENTS_COLUMN_GLUCOSE     = "glucose";
     public static final String MEASUREMENTS_COLUMN_WEIGHT      = "weight";
+    public static final String MEASUREMENTS_COLUMN_TYPE        = "type";
     public static final String MEASUREMENTS_COLUMN_HEIGHT      = "height";
     public static final String MEASUREMENTS_COLUMN_DATE        = "date";
 
@@ -196,6 +197,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
         while(res.isAfterLast() == false){
             array_list.add(res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_GLUCOSE)));
+            res.moveToNext();
+        }
+
+        return array_list;
+    }
+
+    public ArrayList<String> getAllMeasurementsOfAUserHistoric(String id) {
+        ArrayList<String> array_list = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery("SELECT * FROM measurements WHERE user_id = " + id, null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+            String cad = "Glucosa: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_GLUCOSE));
+            cad += "\nTipo de Medición (comida): "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_TYPE));
+            cad += "\nFecha: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_DATE));
+            cad += "\nComentario: "+res.getString(res.getColumnIndex(MEASUREMENTS_COLUMN_DESCRIPTION));
+
+            array_list.add(cad);
             res.moveToNext();
         }
 

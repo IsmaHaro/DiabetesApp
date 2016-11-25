@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -34,6 +35,7 @@ public class WelcomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         //showToolbar("", false);
 
@@ -84,6 +86,11 @@ public class WelcomeActivity extends AppCompatActivity
         switch (id){
             case R.id.nav_welcome:
                 intent = new Intent(this, WelcomeActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.nav_historic:
+                intent = new Intent(this, HistoricActivity.class);
                 startActivity(intent);
                 break;
 
